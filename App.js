@@ -5,16 +5,21 @@ import  Header  from './components/Header';
 import Input from './components/Input';
 
 export default function App() {
+  const [modalVisible, setModalVisible] = useState(false)
   const onTextAdd = function (newText) {
     console.log(newText);
+    setModalVisible(false)
   }
+  const makeModalVisible =()=>{setModalVisible(true)}
+  const cancelModalVisible =()=>{cancelModalVisible(true)}
   const name = "Awesome";
   
   return (
     <View style={styles.container}>
       
       <Header>appName = {name}</Header>
-      <Input onAdd={onTextAdd} alsoAdd={ () => console.log('abc')}></Input>
+      <Button title='Add a Goal' onPress={makeModalVisible(true)}/>
+      <Input mondal = {modalVisible} onAdd={onTextAdd} onCancel={cancelModalVisible}></Input>
       <StatusBar style="auto" />
     </View>
   );

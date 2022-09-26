@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Button, View, TextInput } from 'react-native';
 
-export default function Input(props) {
+export default function Input({onAdd, modal, onCancel}) {
     const[text, setText] = useState('');
   return (
-    <View>
+    <Modal visible = {modal}>
+    <View style ={styles.container}>
       <TextInput
-        style={{height: 40}}
-        placeholder="Type here!"
         onChangeText={newText => setText(newText)}
-        defaultValue={text}
+        value = {text}
+        placeholder = "Put Text"
       />
       <Button 
       title="Confirm" 
@@ -19,6 +19,11 @@ export default function Input(props) {
           setText("");}
        }
       />
+      <Button
+      title="Cancel" 
+      onPress={onCancel}
+      />
     </View>
+    </Modal>
   )
 }
