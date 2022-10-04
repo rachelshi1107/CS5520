@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text, Modal, Button, StyleSheet } from 'react-native';
-import colors from "../constants/colors";
+import Colors from "../constants/colors";
 
 import Card from '../components/Card';
-import { LinearGradient } from 'expo-linear-gradient';
 
 const GameSceen = props => {
     const { userNumber, hint, finishGame, guessAgain } = props;
 
     return (
+
+        // show different modes to the user by checking if the user gets the right number
         <><Modal transparent={true} visible={hint == 'hit' ? false : true}>
             <View style={styles.container}>
             
@@ -18,8 +19,8 @@ const GameSceen = props => {
                         <Text style={styles.title}>That's not my number!</Text>
                         <Text style={styles.title}>Guess {hint}!</Text>
                     </View>
-                    <Button title="I am done" onPress={finishGame} color={colors.accent} />
-                    <Button title="Let Me Guess Again" onPress={guessAgain} color={colors.primary} />
+                    <Button title="I am done" onPress={finishGame} color={Colors.accent} />
+                    <Button title="Let Me Guess Again" onPress={guessAgain} color={Colors.primary} />
                 </Card>
             </View>
         </Modal><Modal transparent={true} visible={hint == 'hit' ? true : false}>
@@ -29,7 +30,7 @@ const GameSceen = props => {
                         <View>
                             <Text style={styles.title}>Congrats! You Won!</Text>
                         </View>
-                        <Button title="Thank you!" onPress={finishGame} color={colors.primary} />
+                        <Button title="Thank you!" onPress={finishGame} color={Colors.primary} />
                     </Card>
                 </View>
             </Modal></>
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        color: '#daa520',
+        color: Colors.gold,
         textAlign: 'center',
         marginTop: 2,
     },

@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
-import colors from '../constants/colors';
+import Colors from '../constants/colors';
 
 import Header from '../components/Header';
 import Card from '../components/Card';
 
 const GameOverScreen = props => {
     const { startOver, result, correctAnswer } = props;
+    
+    // the uri of the image based on the chosen number
     const uri = 'https://picsum.photos/id/' + correctAnswer + '/100/100';
 
     return (
@@ -19,7 +21,7 @@ const GameOverScreen = props => {
                             style={styles.image}
                         />
                     </View>
-                    <Button title="Start Again" onPress={startOver} color={colors.primary}></Button>
+                    <Button title="Start Again" onPress={startOver} color={Colors.primary}></Button>
             </Card>
         </View>
     );
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        color: '#daa520',
+        color: Colors.gold,
         textAlign: 'center',
         marginTop: 2,
         marginLeft: 8,

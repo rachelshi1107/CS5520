@@ -9,14 +9,19 @@ import Colors from '../constants/colors';
 const StartGameScreen = props => {
     const [enteredValue, setEnteredValue] = useState('');
     const { onStartGame } = props;
+
+    // remove any text that is not number
     const numberInputHandler = inputText => {
         setEnteredValue(inputText.replace(/[^0-9]/g, ''));
     };
 
+    // reset the user input
     const resetInputHandler = () => {
         setEnteredValue('');
     }
 
+    // check if the user input is valid, if invalid then shows an alert to the user
+    // else starts the game
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
         if (chosenNumber === isNaN(chosenNumber) || chosenNumber < 1020 || chosenNumber > 1029) {
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        color: '#daa520',
+        color: Colors.gold,
         textAlign: 'center'
     },
     inputContainer: {
