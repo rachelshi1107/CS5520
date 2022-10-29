@@ -2,7 +2,9 @@ import {Text, View, Pressable, StyleSheet} from 'react-native';
 import { GlobalColors } from '../constants/styles';
 
 
-function ExpenseItem() {
+function ExpenseItem({ id, description, amount }) {
+    const navigation = useNavigation();
+    
     return (
         <Pressable 
             style={({ pressed }) => pressed && styles.pressed}
