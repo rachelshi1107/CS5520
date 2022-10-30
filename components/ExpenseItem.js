@@ -1,4 +1,4 @@
-import {Text, View, Pressable, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import { GlobalColors } from '../constants/styles';
 
 

@@ -27,6 +27,28 @@ function EditExpense( { route, navigation } ) {
         );
     }
 
+    async function onItemUnmark() {
+        Alert.alert(
+            'Important',
+            'Are you sure you want to remove this as important?',
+            [
+                {
+                    text: 'No',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Yes',
+                    onPress: async() => {
+                        const expense = route.params.expense;
+                        expense.important = false;
+                        await updateToDB(expense);
+                        navigation.navigate('AllExpenses');
+                    }
+                }
+            ]
+        );
+    }
+
     async function onItemDelete() {
         Alert.alert(
             'Delete',
@@ -51,11 +73,15 @@ function EditExpense( { route, navigation } ) {
         <View style={styles.container}>
             <View style={styles.buttons}>
                 <TextButton
-                    text={'Make it important'} style={styles.button} onPress={onItemMark}
-                />       
+                    text={route.params.expense.important === false ? 'Make it important' : 'Make it unimportant'} 
+                    style={styles.button} 
+                    onPress={route.params.expense.important === false ? onItemMark : onItemUnmark} 
+                />
                 <TextButton
-                    text={'Delete'} style={styles.button} onPress={onItemDelete}
-                />  
+                    text={'Delete'} 
+                    style={styles.button} 
+                    onPress={onItemDelete} 
+                />
             </View>
         </View>
     );
