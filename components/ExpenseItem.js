@@ -1,7 +1,6 @@
 import {Text, View, StyleSheet} from 'react-native';
 import { GlobalColors } from '../constants/styles';
 
-
 function ExpenseItem({ amount, description }) {
     return (
         <View style={styles.expenseItem}>

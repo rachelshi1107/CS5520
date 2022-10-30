@@ -8,11 +8,7 @@ module.exports = function (api) {
         {
           envName: 'APP_ENV',
           moduleName: '@env',
-          path: '.env',
-          // blacklist: null,
-          // whitelist: null,
-          // safe: false,
-          // allowUndefined: true,
+          path: '.env'
         },
       ],
     ],

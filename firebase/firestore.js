@@ -20,7 +20,7 @@ export async function updateToDB(expense) {
 
 export async function deleteFromDB(key) {
   try {
-    await deleteDoc(doc(firestore, "expenses", key));
+    await deleteDoc(doc(firestore, 'expenses', key));
   } catch (err) {
     console.log(err);
   }
