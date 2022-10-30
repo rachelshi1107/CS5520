@@ -1,13 +1,21 @@
-import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, setDoc, deleteDoc, doc } from 'firebase/firestore';
 
-import { firestore } from "./firebase-setup";
+import { firestore } from './firebase-setup';
 
-export async function writeToDB(item) {
+export async function writeToDB(expense) {
   try {
-    const docRef = await addDoc(collection(firestore, "expenses"), item);
+    await addDoc(collection(firestore, 'expenses'), expense);
   } catch (err) {
     console.log(err);
   }
+}
+
+export async function updateToDB(expense) {
+    try {
+      await setDoc(doc(firestore, 'expenses', expense.key), expense);
+    } catch (err) {
+      console.log(err);
+    }
 }
 
 export async function deleteFromDB(key) {

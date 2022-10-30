@@ -4,7 +4,7 @@ export const GlobalColors = {
         slategray: `#708090`,
         lavender: `#e6e6fa`,
         mediumpurple: `#776ec4`,
-        lightpurple: '#bda8f0',
+        lightpurple: '#a8a1e3',
         gold: '#daa520'
     },
 }

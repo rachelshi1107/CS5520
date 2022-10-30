@@ -1,16 +1,22 @@
 import { View, StyleSheet } from 'react-native';
 import ExpensesList from '../components/ExpensesList';
 import { GlobalColors } from '../constants/styles';
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase-setup';
 
-function AllExpenses() {
+function AllExpenses( { navigation } ) {
+
+  async function onItemPress(expense) {
+    console.log('pressed');
+    navigation.navigate('Edit Expense', {expense: expense});
+  }
+
     const [expenses, setExpenses] = useState([]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
-          collection(firestore, "expenses"),
+          collection(firestore, 'expenses'),
           (querySnapshot) => {
             if (querySnapshot.empty) {
                 setExpenses([]);
@@ -34,7 +40,9 @@ function AllExpenses() {
         <View style={styles.container}>
             <ExpensesList
                 expenses={expenses}
-            />
+                onItemPress={onItemPress}
+            >
+            </ExpensesList>
         </View>
     );
 }

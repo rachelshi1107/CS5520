@@ -1,19 +1,32 @@
-import { FlatList, StyleSheet } from 'react-native';
+import { ScrollView, Pressable, StyleSheet } from 'react-native';
 import ExpenseItem from "./ExpenseItem";
 
-function renderExpenseItem(itemData) {
-    return <ExpenseItem {...itemData.item} />
-}
-function ExpensesList({ expenses }) {
+function ExpensesList({ expenses, onItemPress }) {
     return (
-        <FlatList
-            data={expenses}
-            renderItem={renderExpenseItem}
-            keyExtractor={item => item.id}
-        />
+        <ScrollView>
+            { expenses.map((expense) => {
+                return (
+                    <Pressable
+                        key={expense.key}
+                        onPress={() => {
+                            onItemPress(expense);
+                        }}
+                        style={({ pressed }) => {
+                            return pressed && styles.pressedItem;
+                        }}
+                    >
+                        <ExpenseItem amount={expense.amount} description={expense.description}></ExpenseItem>
+                    </Pressable>
+                );
+            })}
+        </ScrollView>
     );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    pressedItem: {
+        opacity: 0.5
+    }
+});
 
 export default ExpensesList;

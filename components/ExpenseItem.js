@@ -2,27 +2,20 @@ import {Text, View, Pressable, StyleSheet} from 'react-native';
 import { GlobalColors } from '../constants/styles';
 
 
-function ExpenseItem({ id, description, amount }) {
-    const navigation = useNavigation();
-    
+function ExpenseItem({ amount, description }) {
     return (
-        <Pressable 
-            style={({ pressed }) => pressed && styles.pressed}
-            onPress={expensePressHandler}
-        >
-            <View style={styles.expenseItem}>
-                <View>
-                    <Text style={styles.description}>
-                        {description}
-                    </Text>
-                </View>
-                <View style={styles.amountContainer}>
-                    <Text style={styles.amount}>
-                        {amount.toFixed(2)}
-                    </Text>
-                </View>
+        <View style={styles.expenseItem}>
+            <View>
+                <Text style={styles.description}>
+                    {description}
+                </Text>
             </View>
-        </Pressable>
+            <View style={styles.amountContainer}>
+                <Text style={styles.amount}>
+                    {amount}
+                </Text>
+            </View>
+        </View>
     );
 }
 

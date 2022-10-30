@@ -7,6 +7,7 @@ import { GlobalColors } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
 import IconButton from './components/IconButton';
 import AllExpenses from './screens/AllExpenses';
+import EditExpense from './screens/EditExpense';
 import ImportantExpenses from './screens/ImportantExpenses';
 import AddExpense from './screens/AddExpense';
 
@@ -27,7 +28,7 @@ function ExpensesOverview() {
             size={24}
             color={tintColor}
             onPress={() => {
-              navigation.navigate('AddExpense');
+              navigation.navigate('Add Expense');
             }}
           />
         )
@@ -47,7 +48,7 @@ function ExpensesOverview() {
 
       <BottomTabs.Screen
         name="ImportantExpenses"
-        component={AllExpenses}
+        component={ImportantExpenses}
         options={{
           title: 'Important Expenses',
           tabBarLabel: 'Important Expenses',
@@ -75,6 +76,16 @@ export default function App() {
               name="ExpensesOverview"
               component={ExpensesOverview}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Edit Expense"
+              component={EditExpense}
+              //options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Add Expense"
+              component={AddExpense}
+              //options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>
