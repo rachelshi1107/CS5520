@@ -1,18 +1,50 @@
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, Alert, StyleSheet } from 'react-native';
 import TextButton from '../components/TextButton';
 import { deleteFromDB, updateToDB } from '../firebase/firestore';
 import { GlobalColors } from '../constants/styles';
 
-function EditExpense( { route } ) {
+function EditExpense( { route, navigation } ) {
 
     async function onItemMark() {
-        const expense = route.params.expense;
-        expense.important = true;
-        await updateToDB(expense);
+        Alert.alert(
+            'Important',
+            'Are you sure you want to mark this as important?',
+            [
+                {
+                    text: 'No',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Yes',
+                    onPress: async() => {
+                        const expense = route.params.expense;
+                        expense.important = true;
+                        await updateToDB(expense);
+                        navigation.navigate('AllExpenses');
+                    }
+                }
+            ]
+        );
     }
 
     async function onItemDelete() {
-        await deleteFromDB(route.params.expense.key);
+        Alert.alert(
+            'Delete',
+            'Are you sure you want to delete this?',
+            [
+                {
+                    text: 'No',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Yes',
+                    onPress: async() => {
+                        await deleteFromDB(route.params.expense.key);
+                        navigation.navigate('AllExpenses');
+                    }
+                }
+            ]
+        );
     }
 
     return (
@@ -43,8 +75,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        minWidth: 120,
-        marginVertical: 10
+        minWidth: 160,
+        marginVertical: 12
     }
 });
 

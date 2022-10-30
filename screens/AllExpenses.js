@@ -9,7 +9,7 @@ function AllExpenses( { navigation } ) {
 
   async function onItemPress(expense) {
     console.log('pressed');
-    navigation.navigate('Edit Expense', {expense: expense});
+    navigation.navigate('EditExpense', {expense: expense});
   }
 
     const [expenses, setExpenses] = useState([]);

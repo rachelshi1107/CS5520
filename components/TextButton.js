@@ -7,6 +7,7 @@ function TextButton({ text, onPress, style }) {
             <Pressable
                 onPress={onPress}
                 style={({ pressed }) => pressed && styles.pressed}
+                android_ripple={{ color: GlobalColors.colors.mediumpurple, foreground: true }}
             >
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>

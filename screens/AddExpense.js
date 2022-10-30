@@ -13,14 +13,14 @@ function AddExpense( {navigation} ) {
     }
 
     async function onSubmit() {
-        if (!amount || !description || isNaN(amount)) {
+        if (!amount || !description || isNaN(amount) || amount < 0) {
             Alert.alert(
-                "Invalid amount or description",
-                "Please enter valid amount or description",
+                'Invalid input',
+                'Please check your input values',
                 [
                   {
-                    text: "OK",
-                    style: "destructive",
+                    text: 'OK',
+                    style: 'destructive',
                   }
                 ]
             );

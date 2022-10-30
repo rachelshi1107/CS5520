@@ -28,7 +28,7 @@ function ExpensesOverview() {
             size={24}
             color={tintColor}
             onPress={() => {
-              navigation.navigate('Add Expense');
+              navigation.navigate('AddExpense');
             }}
           />
         )
@@ -78,14 +78,14 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen 
-              name="Edit Expense"
+              name="EditExpense"
               component={EditExpense}
-              //options={{ headerShown: false }}
+              options={{ title: 'Edit Expense' }}
             />
             <Stack.Screen 
-              name="Add Expense"
+              name="AddExpense"
               component={AddExpense}
-              //options={{ headerShown: false }}
+              options={{ title: 'Add Expense' }}
             />
           </Stack.Navigator>
         </NavigationContainer>
